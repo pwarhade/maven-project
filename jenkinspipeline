@@ -4,20 +4,22 @@ pipeline
 agent any
 {
 
-stage "scm checkout"
+stages{
+stage('Build'){
+steps{
 git 'https://github.com/pwarhade/maven-project.git'
-
-
+}
 }
 
 
-
-
-stage "code test"
-withMaven(maven: 'mymaven') {
+stage "code test" {
+steps {
+withMaven(maven: 'mymaven') 
+{
     sh 'mvn test'
 }
 }
 
+}
 }
 }
