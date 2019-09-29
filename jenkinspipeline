@@ -2,24 +2,25 @@ pipeline
 {
 
 agent any
-{
+    
 
-stages{
-stage('Build'){
-steps{
-git 'https://github.com/pwarhade/maven-project.git'
-}
-}
+    stages{
+            stage('Build'){
+                            steps{
+                                    git 'https://github.com/pwarhade/maven-project.git'
+                                 }
+                            }
 
 
-stage ("code test") {
-steps {
-withMaven(maven: 'mymaven') 
-{
-    sh 'mvn test'
-}
-}
+            stage ("code test") {
+                                steps {
+                                    withMaven(maven: 'mymaven') 
+                                       {
+                                             sh 'mvn test'
+                                        }
+                                      }
 
-}
-}
-}
+                                }
+
+                    }
+    }
